@@ -63,7 +63,7 @@ class History
   # submit forms, see _loadPage and _submit.
   _resource: (url, method, data, headers)->
     method = (method || "GET").toUpperCase()
-    unless url.protocol == "file:" || (url.protocol && url.hostname)
+    unless url.protocol == "file:" || (url.protocol && url.hostname) || (url.href == 'javascript:""')
       throw new Error("Cannot load resource: #{URL.format(url)}")
 
     # If the browser has a new window, use it. If a document was already
